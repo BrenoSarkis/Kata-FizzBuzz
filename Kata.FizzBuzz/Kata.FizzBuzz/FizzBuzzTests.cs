@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Runtime.Remoting.Messaging;
+using NUnit.Framework;
 using NUnit.Framework.Constraints;
 
 namespace Kata.FizzBuzz
@@ -12,6 +13,7 @@ namespace Kata.FizzBuzz
         [TestCase(5, "Buzz")]
         [TestCase(6, "Fizz")]
         [TestCase(10, "Buzz")]
+        [TestCase(15, "FizzBuzz")]
         public void FizzBuzz(int n, string expectedResult)
         {
             Assert.That(FizzBuzzer.GetValue(n), Is.EqualTo(expectedResult));
@@ -22,8 +24,9 @@ namespace Kata.FizzBuzz
     {
         public static string GetValue(int n)
         {
-            if (IsDivisibleByFive(n)) return "Buzz";
+            if (IsDisivisibleByThree(n) && IsDivisibleByFive(n)) return "FizzBuzz";
             if (IsDisivisibleByThree(n)) return "Fizz";
+            if (IsDivisibleByFive(n)) return "Buzz";
             return n.ToString();
         }
 
