@@ -11,6 +11,7 @@ namespace Kata.FizzBuzz
         [TestCase(3, "Fizz")]
         [TestCase(5, "Buzz")]
         [TestCase(6, "Fizz")]
+        [TestCase(10, "Buzz")]
         public void FizzBuzz(int n, string expectedResult)
         {
             Assert.That(FizzBuzzer.GetValue(n), Is.EqualTo(expectedResult));
@@ -21,9 +22,19 @@ namespace Kata.FizzBuzz
     {
         public static string GetValue(int n)
         {
-            if (n == 5) return "Buzz";
-            if (n % 3 == 0) return "Fizz";
+            if (IsDivisibleByFive(n)) return "Buzz";
+            if (IsDisivisibleByThree(n)) return "Fizz";
             return n.ToString();
+        }
+
+        private static bool IsDisivisibleByThree(int n)
+        {
+            return n % 3 == 0;
+        }
+
+        private static bool IsDivisibleByFive(int n)
+        {
+            return n % 5 == 0;
         }
     }
 }
