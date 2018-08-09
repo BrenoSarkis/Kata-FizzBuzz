@@ -11,13 +11,19 @@ namespace Kata.FizzBuzz
         {
             Assert.That(FizzBuzzer.GetValue(1), Is.EqualTo("1"));
         }
+
+        [Test]
+        public void TwoReturnsTwo()
+        {
+            Assert.That(FizzBuzzer.GetValue(2), Is.EqualTo("2"));
+        }
     }
 
     public class FizzBuzzer
     {
         public static string GetValue(int n)
         {
-            return "1";
+            return n.ToString();
         }
     }
 }
