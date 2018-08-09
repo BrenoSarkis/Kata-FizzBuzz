@@ -22,7 +22,12 @@ namespace Kata.FizzBuzz
         public void ThreeReturnsFizz()
         {
             Assert.That(FizzBuzzer.GetValue(3), Is.EqualTo("Fizz"));
+        }
 
+        [Test]
+        public void FiveReturnsBuzz()
+        {
+            Assert.That(FizzBuzzer.GetValue(5), Is.EqualTo("Buzz"));
         }
     }
 
@@ -30,6 +35,7 @@ namespace Kata.FizzBuzz
     {
         public static string GetValue(int n)
         {
+            if (n == 5) return "Buzz";
             if (n == 3) return "Fizz";
             return n.ToString();
         }
